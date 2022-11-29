@@ -1,4 +1,13 @@
+server:
+  logLevel: debug
+
 middlewares:
+  assets:
+    module: trifid-core/middlewares/static.js
+    paths: /swiss-assets
+    config:
+      directory: file:node_modules/swiss-styleguide/build
+
   rewrite:
     module: file:lib/rewrite.js
     order: 0
