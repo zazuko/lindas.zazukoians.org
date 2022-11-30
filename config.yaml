@@ -27,6 +27,8 @@ middlewares:
   yasgui:
     module: trifid-plugin-yasgui
     paths: /sparql
+    config:
+      urlShortener: https://s.zazuko.com/api/v1/shorten
 
   sparql-proxy:
     module: "@zazuko/trifid-plugin-sparql-proxy"
