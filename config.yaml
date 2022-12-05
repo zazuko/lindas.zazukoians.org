@@ -1,16 +1,31 @@
 server:
   logLevel: debug
 
+template:
+  files:
+    main: file:template/main.hbs
+    header: file:template/header.hbs
+    footer: file:template/footer.hbs
+  title: LINDAS - Linked Data Service
+
 middlewares:
   assets:
     module: trifid-core/middlewares/static.js
+    order: 0
     paths: /swiss-assets
     config:
       directory: file:node_modules/swiss-styleguide/build
 
+  static-assets:
+    module: trifid-core/middlewares/static.js
+    order: 0
+    paths: /static-assets
+    config:
+      directory: file:static
+
   rewrite:
     module: file:lib/rewrite.js
-    order: 0
+    order: 1
     config:
       url: https://lindas.admin.ch/
 

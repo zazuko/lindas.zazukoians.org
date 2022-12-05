@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #454545;
+  background-color: #f5f5f5;
+  background-image: url(/swiss-assets/img/bg-striped.png);
+}
+
+.page {
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 0 60px 0 rgb(0 0 0 / 60%);
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .page {
+    width: 970px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .page {
+    width: 1170px;
+  }
+}
+
+header {
+  padding: 10px 15px 30px;
+  border-bottom: 5px solid #dc0018;
+  display: flex;
+}
+
+header > a.logo-link {
+  display: flex;
+  text-decoration: none;
+  color: #454545;
+}
+
+.header-logo {
+  padding-right: 2em;
+  margin-right: 2em;
+  border-right: 1px solid #e5e5e5;
+  display: inline-block;
+}
+
+.app-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+main {
+  padding: 25px 15px;
+}
+
+footer {
+  border-top: 1px solid #d5d5d5;
+  background-color: #f5f5f5;
+}
+
+.footer-bottom {
+  margin-top: 55px;
+  border-top: 1px solid #fff;
+  padding: 10px 15px;
+}
