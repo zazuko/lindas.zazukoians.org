@@ -1,7 +1,7 @@
 {
   "name": "lindas-zazukoians-org",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "dependencies": {
     "@zazuko/trifid-plugin-sparql-proxy": "^0.1.3",
