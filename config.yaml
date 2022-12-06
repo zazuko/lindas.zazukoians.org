@@ -27,7 +27,7 @@ middlewares:
     module: file:lib/rewrite.js
     order: 1
     config:
-      url: https://lindas.admin.ch/
+      url: https://ld.admin.ch/
 
   welcome:
     module: trifid-core/middlewares/view.js
