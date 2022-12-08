@@ -17,10 +17,6 @@
     "start": "trifid-core",
     "remove:fonts:frutiger:build": "del-cli 'node_modules/swiss-styleguide/build/fonts/Frutiger*'",
     "remove:fonts:frutiger:src": "del-cli 'node_modules/swiss-styleguide/src/assets/fonts/Frutiger*'",
-    "postinstall": "npm run remove:fonts:frutiger:build && npm run remove:fonts:frutiger:src",
-    "test": "standard"
-  },
-  "devDependencies": {
-    "standard": "^17.0.0"
+    "postinstall": "npm run remove:fonts:frutiger:build && npm run remove:fonts:frutiger:src"
   }
 }
