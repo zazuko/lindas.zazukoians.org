@@ -4,6 +4,7 @@
   "version": "0.4.3",
   "type": "module",
   "dependencies": {
+    "@zazuko/trifid-plugin-ckan": "^2.0.0",
     "@zazuko/trifid-plugin-sparql-proxy": "^0.1.3",
     "@zazuko/trifid-renderer-entity": "^0.3.10",
     "del-cli": "^5.0.0",
