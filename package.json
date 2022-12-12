@@ -5,7 +5,7 @@
   "type": "module",
   "dependencies": {
     "@zazuko/trifid-plugin-sparql-proxy": "^0.1.3",
-    "@zazuko/trifid-renderer-entity": "^0.3.7",
+    "@zazuko/trifid-renderer-entity": "^0.3.10",
     "del-cli": "^5.0.0",
     "swiss-styleguide": "^3.0.0",
     "trifid-core": "^2.2.3",
