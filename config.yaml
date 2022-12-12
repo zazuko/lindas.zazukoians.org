@@ -10,6 +10,8 @@ template:
 
 globals:
   datasetBaseUrl: https://ld.admin.ch/
+  sparqlEndpoint:
+    url: https://lindas.admin.ch/query
 
 middlewares:
   assets:
@@ -56,7 +58,6 @@ middlewares:
     module: "@zazuko/trifid-plugin-sparql-proxy"
     paths: /query
     config:
-      endpointUrl: https://lindas.admin.ch/query
       queryOperation: postQueryUrlencoded
 
   sparql-handler:
