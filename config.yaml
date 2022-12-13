@@ -42,8 +42,6 @@ middlewares:
     module: "@zazuko/trifid-plugin-ckan"
     order: 30
     paths: /ckan
-    config:
-      endpointUrl: https://lindas.zazukoians.org/query
 
   entity-renderer:
     module: "@zazuko/trifid-renderer-entity"
