@@ -11,7 +11,8 @@
     "swiss-styleguide": "^3.0.0",
     "trifid-core": "^2.2.3",
     "trifid-handler-sparql": "^2.0.3",
-    "trifid-plugin-yasgui": "^2.2.0"
+    "trifid-plugin-yasgui": "^2.2.0",
+    "@zazuko/trifid-handle-redirects": "^0.1.1"
   },
   "license": "UNLICENSED",
   "scripts": {

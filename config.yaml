@@ -64,6 +64,9 @@ middlewares:
     config:
       queryOperation: postQueryUrlencoded
 
+  handle-redirects-demo:
+    module: "@zazuko/trifid-handle-redirects"
+
   sparql-handler:
     module: trifid-handler-sparql
     config:
