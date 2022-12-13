@@ -45,6 +45,12 @@ middlewares:
 
   entity-renderer:
     module: "@zazuko/trifid-renderer-entity"
+    config:
+      labelLoader:
+        labelNamespace: https://lindas.zazukoians.org
+        chunkSize: 30
+        concurrency: 2
+        timeout: 1000
 
   yasgui:
     module: trifid-plugin-yasgui
