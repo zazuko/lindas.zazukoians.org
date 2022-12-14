@@ -17,6 +17,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "trifid-core",
+    "start-local": "DEBUG=trifid:* SPARQL_ENDPOINT_URL=https://lindas.zazukoians.org/query trifid-core -c config-local.yaml",
     "remove:fonts:frutiger:build": "del-cli 'node_modules/swiss-styleguide/build/fonts/Frutiger*'",
     "remove:fonts:frutiger:src": "del-cli 'node_modules/swiss-styleguide/src/assets/fonts/Frutiger*'",
     "postinstall": "npm run remove:fonts:frutiger:build && npm run remove:fonts:frutiger:src"
