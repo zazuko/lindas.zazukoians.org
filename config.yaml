@@ -47,7 +47,8 @@ middlewares:
     module: "@zazuko/trifid-renderer-entity"
     config:
       labelLoader:
-        labelNamespace: https://ld.admin.ch
+        labelNamespaces:
+          - https://ld.admin.ch
         chunkSize: 30
         concurrency: 2
         timeout: 1000
