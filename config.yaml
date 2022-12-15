@@ -46,6 +46,7 @@ middlewares:
   entity-renderer:
     module: "@zazuko/trifid-renderer-entity"
     config:
+      path: views/entity.hbs
       labelLoader:
         labelNamespaces:
           - https://ld.admin.ch
