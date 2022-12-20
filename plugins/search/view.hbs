@@ -1,0 +1,83 @@
+<div class="trifid-content">
+  <div class="container">
+    <h1>Datasets</h1>
+
+    <zack-search>
+      <div class="container-fluid">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-9">
+              ${m(readFile('./content/datasets.'+locale+'.md'))}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="zack-query-box">
+              <div class="col-sm-12 col-md-6">
+                <form
+                  class="zack-query-form form-search"
+                  action="javascript:document.getElementById('query').blur();"
+                >
+                  <h2 class="sr-only">Searchterm</h2>
+                  <zack-query-input>
+                    <input
+                      autofocus
+                      slot="query"
+                      id="query"
+                      class="zack-query-input zack-big form-control search-field"
+                      type="text"
+                      placeholder="Searchterm"
+                    />
+                    <button
+                      slot="query"
+                      class="icon icon--search icon--before"
+                    ></button>
+                  </zack-query-input>
+                </form>
+              </div>
+              <div id="type-filters" class="hidden-sm col-md-6 hidden-xs">
+              </div>
+              <div class="col-sm-12 col-md-12" style="margin-bottom: 0">
+                <div id="filter-container" class="zack-filter">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="zack-content">
+                <div class="zack-result-list">
+                  <div id="scrollArea" class="clusterize-scroll">
+                    <zack-results id="contentArea" class="clusterize-content">
+                      <div class="clusterize-no-data">Loading data…</div>
+                      <link
+                        id="result"
+                        class="shape"
+                        type="text/turtle"
+                        href="./shape/result.ttl"
+                      />
+                    </zack-results>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="zack-overview">
+                <div class="col-sm-3">
+                  <span id="count" class="zack-count zack-big"></span>
+                  <i>Results</i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </zack-search>
+
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="/datasets-assets/zack.js"></script>
+    <script src="/datasets-public-assets/search.js"></script>
+  </div>
+</div>

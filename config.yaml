@@ -60,6 +60,12 @@ middlewares:
     config:
       urlShortener: https://s.zazuko.com/api/v1/shorten
 
+  search:
+    module: file:plugins/search/index.js
+    paths:
+      - /datasets
+      - /datasets-int
+
   sparql-proxy:
     module: "@zazuko/trifid-plugin-sparql-proxy"
     paths: /query
