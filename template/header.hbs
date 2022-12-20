@@ -53,9 +53,29 @@
 
 <nav class="trifid-main-navigation">
   <ul>
-    <li><a href="/" class="active">About LINDAS</a></li>
-    <li><a href="/datasets/">Datacatalog</a></li>
-    <li><a href="/sparql/">Query Data</a></li>
-    <li><a href="/publish/">Publish Data</a></li>
+    <li>
+      <a
+        href="/"
+        {{#ifEquals locals.currentPath "/"}}class="active"{{/ifEquals}}
+      >About LINDAS</a>
+    </li>
+    <li>
+      <a
+        href="/datasets/"
+        {{#ifEquals locals.currentPath "/datasets/"}}class="active"{{/ifEquals}}
+      >Datacatalog</a>
+    </li>
+    <li>
+      <a
+        href="/sparql/"
+        {{#ifEquals locals.currentPath "/sparql/"}}class="active"{{/ifEquals}}
+      >Query Data</a>
+    </li>
+    <li>
+      <a
+        href="/publish/"
+        {{#ifEquals locals.currentPath "/publish/"}}class="active"{{/ifEquals}}
+      >Publish Data</a>
+    </li>
   </ul>
 </nav>
