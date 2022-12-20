@@ -37,6 +37,12 @@ middlewares:
     methods: GET
     config:
       path: views/welcome.hbs
+  publish:
+    module: trifid-core/middlewares/view.js
+    paths: /publish
+    methods: GET
+    config:
+      path: views/publish.hbs
 
   ckan:
     module: "@zazuko/trifid-plugin-ckan"
@@ -83,6 +89,7 @@ middlewares:
     config:
       namespace: lindas
       entries:
+        # used on homepage (path: /)
         - name: about-lindas
           paths:
             default: file:content/about-lindas/en.md
@@ -97,3 +104,12 @@ middlewares:
             fr: file:content/linked-data/fr.md
             de: file:content/linked-data/de.md
             it: file:content/linked-data/it.md
+
+        # used at /publish
+        - name: publish
+          paths:
+            default: file:content/publish/en.md
+            en: file:content/publish/en.md
+            fr: file:content/publish/fr.md
+            de: file:content/publish/de.md
+            it: file:content/publish/it.md
