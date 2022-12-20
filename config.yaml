@@ -11,7 +11,7 @@ template:
 globals:
   datasetBaseUrl: https://ld.admin.ch/
   sparqlEndpoint:
-    url: https://lindas.admin.ch/query
+    url: https://test.lindas.admin.ch/query
 
 middlewares:
   assets:
