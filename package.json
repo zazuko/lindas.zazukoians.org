@@ -9,11 +9,16 @@
     "@zazuko/trifid-plugin-sparql-proxy": "^1.0.0",
     "@zazuko/trifid-renderer-entity": "^0.4.1",
     "del-cli": "^5.0.0",
-    "marked": "^4.2.4",
+    "rehype-stringify": "^9.0.3",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
     "swiss-styleguide": "^3.0.0",
     "trifid-core": "^2.2.3",
     "trifid-handler-sparql": "^2.1.0",
-    "trifid-plugin-yasgui": "^2.2.0"
+    "trifid-plugin-yasgui": "^2.2.0",
+    "unified": "^10.1.2"
   },
   "license": "UNLICENSED",
   "scripts": {
