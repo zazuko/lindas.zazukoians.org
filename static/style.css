@@ -18,11 +18,12 @@ body {
 
 @font-face {
   font-family: "Admin Icons";
-  src: url('/swiss-assets/fonts/AdminCH_Symbols.eot');
-  src: url('/swiss-assets/fonts/AdminCH_Symbols.eot') format('embedded-opentype'),
-       url('/swiss-assets/fonts/AdminCH_Symbols.woff2') format('woff2'),
-       url('/swiss-assets/fonts/AdminCH_Symbols.woff') format('woff'),
-       url('/swiss-assets/fonts/AdminCH_Symbols.ttf') format('truetype');
+  src: url("/swiss-assets/fonts/AdminCH_Symbols.eot");
+  src: url("/swiss-assets/fonts/AdminCH_Symbols.eot")
+      format("embedded-opentype"),
+    url("/swiss-assets/fonts/AdminCH_Symbols.woff2") format("woff2"),
+    url("/swiss-assets/fonts/AdminCH_Symbols.woff") format("woff"),
+    url("/swiss-assets/fonts/AdminCH_Symbols.ttf") format("truetype");
 }
 
 .page {
@@ -60,7 +61,7 @@ header nav ul {
   display: inline-block;
 }
 
-header nav ul>li {
+header nav ul > li {
   display: inline-block;
 }
 
@@ -105,7 +106,7 @@ header a.logo-link {
 .header-links-menu {
   margin: 0;
   padding: 0;
-  font-size: .85em;
+  font-size: 0.85em;
   line-height: 18px;
 }
 
@@ -127,7 +128,15 @@ header a.logo-link {
 .trifid-main-navigation {
   border-top: 5px solid #dc0018;
   background-color: #e4e4e4;
-  background: linear-gradient(to bottom,#e4e4e4 0,#e2e2e2 39%,#ddd 79%,#d5d5d5 91%,#cfcfcf 95%,#bebebe 99%);
+  background: linear-gradient(
+    to bottom,
+    #e4e4e4 0,
+    #e2e2e2 39%,
+    #ddd 79%,
+    #d5d5d5 91%,
+    #cfcfcf 95%,
+    #bebebe 99%
+  );
 }
 
 .trifid-main-navigation ul {
@@ -149,10 +158,18 @@ header a.logo-link {
   display: inline-block;
   height: 70px;
   background: #e8e8e8;
-  background: linear-gradient(to bottom,#e8e8e8 0,#f7f7f7 61%,#f7f7f7 89%,#f5f5f5 91%,#ececec 95%,#d7d7d7 100%);
+  background: linear-gradient(
+    to bottom,
+    #e8e8e8 0,
+    #f7f7f7 61%,
+    #f7f7f7 89%,
+    #f5f5f5 91%,
+    #ececec 95%,
+    #d7d7d7 100%
+  );
   max-width: 110px;
   color: #454545;
-  font-size: .9em;
+  font-size: 0.9em;
   line-height: 1.2;
   padding: 10px 9px;
   text-decoration: none;
@@ -160,7 +177,14 @@ header a.logo-link {
 
 .trifid-main-navigation a:hover {
   color: #dc0018;
-  background: linear-gradient(to bottom,#f4f4f4 0,#fff 10%,#fff 79%,#fff 91%,#dbdbdb 100%);;
+  background: linear-gradient(
+    to bottom,
+    #f4f4f4 0,
+    #fff 10%,
+    #fff 79%,
+    #fff 91%,
+    #dbdbdb 100%
+  );
 }
 
 .trifid-main-navigation a::after {
@@ -172,12 +196,12 @@ header a.logo-link {
   width: 100%;
   text-align: center;
   color: #454545;
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 .trifid-main-navigation a.active {
   background: #fff;
-  border-top: 5px solid #F7001D;
+  border-top: 5px solid #f7001d;
   margin-top: -5px;
   height: 75px;
   font-weight: bold;
@@ -191,6 +215,10 @@ header a.logo-link:focus,
 
 main {
   padding: 25px 15px;
+}
+
+.trifid-content a {
+  color: #069;
 }
 
 footer {

@@ -12,13 +12,31 @@
     </ul>
     <ul class="header-links-languages">
       <li>
-        <a href="?lang=de" lang="de" title="German" aria-label="German">DE</a>
+        <a
+          href="?lang=de"
+          lang="de"
+          title="German"
+          aria-label="German"
+          {{#ifEquals locals.currentLanguage "de"}}class="active"{{/ifEquals}}
+        >DE</a>
       </li>
       <li>
-        <a href="?lang=fr" lang="fr" title="French" aria-label="French">FR</a>
+        <a
+          href="?lang=fr"
+          lang="fr"
+          title="French"
+          aria-label="French"
+          {{#ifEquals locals.currentLanguage "fr"}}class="active"{{/ifEquals}}
+        >FR</a>
       </li>
       <li>
-        <a href="?lang=it" lang="it" title="Italian" aria-label="Italian">IT</a>
+        <a
+          href="?lang=it"
+          lang="it"
+          title="Italian"
+          aria-label="Italian"
+          {{#ifEquals locals.currentLanguage "it"}}class="active"{{/ifEquals}}
+        >IT</a>
       </li>
       <li>
         <a
@@ -26,7 +44,7 @@
           lang="en"
           title="English"
           aria-label="English"
-          class="active"
+          {{#ifEquals locals.currentLanguage "en"}}class="active"{{/ifEquals}}
         >EN</a>
       </li>
     </ul>
@@ -35,9 +53,29 @@
 
 <nav class="trifid-main-navigation">
   <ul>
-    <li><a href="/" class="active">About LINDAS</a></li>
-    <li><a href="/datasets/">Datacatalog</a></li>
-    <li><a href="/sparql/">Query Data</a></li>
-    <li><a href="/publish/">Publish Data</a></li>
+    <li>
+      <a
+        href="/"
+        {{#ifEquals locals.currentPath "/"}}class="active"{{/ifEquals}}
+      >About LINDAS</a>
+    </li>
+    <li>
+      <a
+        href="/datasets/"
+        {{#ifEquals locals.currentPath "/datasets/"}}class="active"{{/ifEquals}}
+      >Datacatalog</a>
+    </li>
+    <li>
+      <a
+        href="/sparql/"
+        {{#ifEquals locals.currentPath "/sparql/"}}class="active"{{/ifEquals}}
+      >Query Data</a>
+    </li>
+    <li>
+      <a
+        href="/publish/"
+        {{#ifEquals locals.currentPath "/publish/"}}class="active"{{/ifEquals}}
+      >Publish Data</a>
+    </li>
   </ul>
 </nav>
