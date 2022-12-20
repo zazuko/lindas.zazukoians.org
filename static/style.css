@@ -78,13 +78,15 @@ header a.logo-link {
 .header-links {
   display: flex;
   align-self: flex-end;
-  margin: 0;
+  margin: 0 0 8px 0;
 }
 
 .header-links a {
   color: #454545;
   text-decoration: none;
   padding: 4px;
+  display: inline-block;
+  margin-bottom: 4px;
 }
 
 .header-links a:hover {
