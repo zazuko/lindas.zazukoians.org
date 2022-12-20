@@ -90,3 +90,10 @@ middlewares:
             fr: file:content/about-lindas/fr.md
             de: file:content/about-lindas/de.md
             it: file:content/about-lindas/it.md
+        - name: linked-data
+          paths:
+            default: file:content/linked-data/en.md
+            en: file:content/linked-data/en.md
+            fr: file:content/linked-data/fr.md
+            de: file:content/linked-data/de.md
+            it: file:content/linked-data/it.md
