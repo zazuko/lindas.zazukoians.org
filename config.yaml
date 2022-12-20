@@ -105,7 +105,7 @@ middlewares:
             de: file:content/linked-data/de.md
             it: file:content/linked-data/it.md
 
-        # used at /publish
+        # used at /publish/
         - name: publish
           paths:
             default: file:content/publish/en.md
@@ -113,3 +113,11 @@ middlewares:
             fr: file:content/publish/fr.md
             de: file:content/publish/de.md
             it: file:content/publish/it.md
+
+        # used at /sparql/
+        - name: sparql
+          paths:
+            en: file:content/sparql/en.md
+            fr: file:content/sparql/fr.md
+            de: file:content/sparql/de.md
+            it: file:content/sparql/it.md
