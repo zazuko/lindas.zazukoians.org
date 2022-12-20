@@ -84,4 +84,9 @@ middlewares:
       namespace: lindas
       entries:
         - name: about-lindas
-          paths: file:content/about-lindas/default.md
+          paths:
+            default: file:content/about-lindas/en.md
+            en: file:content/about-lindas/en.md
+            fr: file:content/about-lindas/fr.md
+            de: file:content/about-lindas/de.md
+            it: file:content/about-lindas/it.md

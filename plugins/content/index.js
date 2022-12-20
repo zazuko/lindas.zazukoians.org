@@ -151,7 +151,7 @@ const factory = async (trifid) => {
       continue
     }
 
-    if (Array.isArray(paths)) {
+    if (paths) {
       await dataLoader(store, name, paths)
       continue
     }
@@ -168,7 +168,8 @@ const factory = async (trifid) => {
     }
 
     // add all configured entried for the specified namespace
-    res.locals['content-plugin'][configuredNamespace] = entriesForLanguage(store)
+    const lang = res?.locals?.currentLanguage || 'en'
+    res.locals['content-plugin'][configuredNamespace] = entriesForLanguage(store, lang)
 
     // let's forward all of this to other middlewares
     return next()

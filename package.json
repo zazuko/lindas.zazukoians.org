@@ -15,7 +15,7 @@
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "swiss-styleguide": "^3.0.0",
-    "trifid-core": "^2.2.3",
+    "trifid-core": "^2.3.0",
     "trifid-handler-sparql": "^2.1.0",
     "trifid-plugin-yasgui": "^2.2.0",
     "unified": "^10.1.2"
