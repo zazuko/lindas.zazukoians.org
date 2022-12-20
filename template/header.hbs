@@ -12,13 +12,31 @@
     </ul>
     <ul class="header-links-languages">
       <li>
-        <a href="?lang=de" lang="de" title="German" aria-label="German">DE</a>
+        <a
+          href="?lang=de"
+          lang="de"
+          title="German"
+          aria-label="German"
+          {{#ifEquals locals.currentLanguage "de"}}class="active"{{/ifEquals}}
+        >DE</a>
       </li>
       <li>
-        <a href="?lang=fr" lang="fr" title="French" aria-label="French">FR</a>
+        <a
+          href="?lang=fr"
+          lang="fr"
+          title="French"
+          aria-label="French"
+          {{#ifEquals locals.currentLanguage "fr"}}class="active"{{/ifEquals}}
+        >FR</a>
       </li>
       <li>
-        <a href="?lang=it" lang="it" title="Italian" aria-label="Italian">IT</a>
+        <a
+          href="?lang=it"
+          lang="it"
+          title="Italian"
+          aria-label="Italian"
+          {{#ifEquals locals.currentLanguage "it"}}class="active"{{/ifEquals}}
+        >IT</a>
       </li>
       <li>
         <a
@@ -26,7 +44,7 @@
           lang="en"
           title="English"
           aria-label="English"
-          class="active"
+          {{#ifEquals locals.currentLanguage "en"}}class="active"{{/ifEquals}}
         >EN</a>
       </li>
     </ul>
