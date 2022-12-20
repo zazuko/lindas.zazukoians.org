@@ -59,6 +59,7 @@ middlewares:
     paths: /sparql
     config:
       urlShortener: https://s.zazuko.com/api/v1/shorten
+      template: file:views/yasgui.hbs
 
   sparql-proxy:
     module: "@zazuko/trifid-plugin-sparql-proxy"
