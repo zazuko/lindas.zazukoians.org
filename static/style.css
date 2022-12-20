@@ -41,7 +41,7 @@ body {
 }
 
 header {
-  padding: 10px 15px 30px;
+  padding: 15px 15px 30px;
   border-bottom: 5px solid #dc0018;
   display: flex;
   flex-direction: column-reverse;
@@ -72,16 +72,46 @@ header a.logo-link {
 .app-name {
   flex: 1;
   font-weight: bold;
+  margin: 0;
+}
+
+.header-links {
+  display: flex;
+  align-self: flex-end;
+  margin: 0;
 }
 
 .header-links a {
   color: #454545;
   text-decoration: none;
+  padding: 4px;
 }
 
 .header-links a:hover {
   color: #dc0018;
   text-decoration: underline;
+}
+
+.header-links-menu {
+  margin: 0;
+  padding: 0;
+  font-size: .85em;
+  line-height: 18px;
+}
+
+.header-links-languages {
+  margin: 0 0 0 8px;
+  padding: 0 0 0 8px;
+  border-left: 1px solid #e5e5e5;
+}
+
+.header-links-languages a:hover {
+  color: #069;
+  text-decoration: underline;
+}
+
+.header-links-languages a.active {
+  background-color: #e5e5e5;
 }
 
 main {
