@@ -1,18 +1,15 @@
-body {
-  --color-primary: #ffb15e;
-  --color-primary-light: #ffe38d;
-  --color-secondary: #ff441c;
-  --color-secondary-dark: #c30000;
-  --color-text-on-primary: #000000;
+.trifid-entity-renderer {
+  --color-text-on-primary: #454545;
   --color-text-on-secondary: #000000;
   --color-black: #000000;
   --color-grey: #4f4f4f;
-  --color-white: #ffffff;
-  --color-darker-white: #fcfcfc;
-  --color-light-grey: #e5e5e5;
+  --color-borders: #ddd;
 }
 
-/*Entity renderer CSS*/
+.trifid-entity-renderer a,
+.trifid-entity-renderer a:hover {
+  color: #069;
+}
 
 .trifid-entity-renderer .entities {
   display: flex;
@@ -23,38 +20,28 @@ body {
 .trifid-entity-renderer .entity {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--color-light-grey);
-}
-
-.trifid-entity-renderer .entity-root {
-  border: 1px solid var(--color-light-grey);
 }
 
 .trifid-entity-renderer .main-header {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--color-borders);
 }
 
 .trifid-entity-renderer .main-header h2 {
-  font-family: "Playfair Display", serif;
   margin-top: 15px;
   margin-bottom: 15px;
   font-size: 32px;
-  text-align: center;
 }
 
 .trifid-entity-renderer .main-header a {
   font-size: 18px;
   color: var(--color-black);
-  text-transform: uppercase;
-  text-align: center;
 }
 
 .trifid-entity-renderer .header {
   font-size: 18px;
   padding-left: 10px;
-  border-bottom: 1px dashed var(--color-light-grey);
+  border-bottom: 1px solid var(--color-borders);
 }
 
 .trifid-entity-renderer .header a {
@@ -67,12 +54,12 @@ body {
 }
 
 .trifid-entity-renderer .rows > :nth-child(1n) {
-  border-top: 1px solid var(--color-light-grey);
+  border-bottom: 1px solid var(--color-borders);
 }
 
 .trifid-entity-renderer .rows > :nth-child(2n) {
-  border-top: 1px solid var(--color-light-grey);
-  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--color-borders);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .trifid-entity-renderer .rows .row {
@@ -154,18 +141,12 @@ body {
 }
 
 .trifid-entity-renderer .metadata {
-  border: var(--color-light-grey) solid 1px;
+  margin-top: 24px;
   font-size: 0.7rem;
 }
 
 .trifid-entity-renderer .metadata h3 {
-  text-align: center;
   color: var(--color-grey);
-}
-
-.trifid-entity-renderer .metadata table {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .trifid-entity-renderer .img-container {
