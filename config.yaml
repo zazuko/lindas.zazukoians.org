@@ -67,6 +67,10 @@ middlewares:
       urlShortener: https://s.zazuko.com/api/v1/shorten
       template: file:views/yasgui.hbs
 
+  graph-explorer:
+    module: trifid-plugin-graph-explorer
+    paths: /graph-explorer
+
   sparql-proxy:
     module: "@zazuko/trifid-plugin-sparql-proxy"
     paths: /query
