@@ -1,6 +1,81 @@
 <header>
-  <a href="/" title="back to home" class="logo-link">
-    <img src="/swiss-assets/img/logo-CH.svg" alt="Logo" class="header-logo" />
-    <p class="app-name">LINDAS - Linked Data Service</p>
-  </a>
+  <div>
+    <a href="/" title="back to home" class="logo-link">
+      <img src="/swiss-assets/img/logo-CH.svg" alt="Logo" class="header-logo" />
+      <p class="app-name">LINDAS - Linked Data Service</p>
+    </a>
+  </div>
+  <nav class="header-links">
+    <ul class="header-links-menu">
+      <li><a href="/">Homepage</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <ul class="header-links-languages">
+      <li>
+        <a
+          href="?lang=de"
+          lang="de"
+          title="German"
+          aria-label="German"
+          {{#ifEquals locals.currentLanguage "de"}}class="active"{{/ifEquals}}
+        >DE</a>
+      </li>
+      <li>
+        <a
+          href="?lang=fr"
+          lang="fr"
+          title="French"
+          aria-label="French"
+          {{#ifEquals locals.currentLanguage "fr"}}class="active"{{/ifEquals}}
+        >FR</a>
+      </li>
+      <li>
+        <a
+          href="?lang=it"
+          lang="it"
+          title="Italian"
+          aria-label="Italian"
+          {{#ifEquals locals.currentLanguage "it"}}class="active"{{/ifEquals}}
+        >IT</a>
+      </li>
+      <li>
+        <a
+          href="?lang=en"
+          lang="en"
+          title="English"
+          aria-label="English"
+          {{#ifEquals locals.currentLanguage "en"}}class="active"{{/ifEquals}}
+        >EN</a>
+      </li>
+    </ul>
+  </nav>
 </header>
+
+<nav class="trifid-main-navigation">
+  <ul>
+    <li>
+      <a
+        href="/"
+        {{#ifEquals locals.currentPath "/"}}class="active"{{/ifEquals}}
+      >About LINDAS</a>
+    </li>
+    <li>
+      <a
+        href="/datasets/"
+        {{#ifEquals locals.currentPath "/datasets/"}}class="active"{{/ifEquals}}
+      >Datacatalog</a>
+    </li>
+    <li>
+      <a
+        href="/sparql/"
+        {{#ifEquals locals.currentPath "/sparql/"}}class="active"{{/ifEquals}}
+      >Query Data</a>
+    </li>
+    <li>
+      <a
+        href="/publish/"
+        {{#ifEquals locals.currentPath "/publish/"}}class="active"{{/ifEquals}}
+      >Publish Data</a>
+    </li>
+  </ul>
+</nav>
