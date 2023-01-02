@@ -37,6 +37,7 @@
           PREFIX schema: <http://schema.org/>
           PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           prefix void:   <http://rdfs.org/ns/void#>
+          PREFIX dcat:   <http://www.w3.org/ns/dcat#>
 
           SELECT * WHERE {
             ?sub schema:name ?name.
@@ -44,6 +45,14 @@
 
             OPTIONAL {
               ?sub schema:description ?description.
+            }
+
+            OPTIONAL {
+              ?sub void:sparqlEndpoint ?endpoint.
+            }
+
+            OPTIONAL {
+              ?sub dcat:landingPage ?landingPage.
             }
 
             FILTER(?resultType IN(void:Dataset))
@@ -136,6 +145,18 @@
         }
       }
 
+      const fixUrl = (url) => {
+        if (!url) {
+          return url;
+        }
+
+        if (!url.startsWith('http')) {
+          return `http://${url}`;
+        }
+
+        return url;
+      }
+
       const getResults = async () => {
         const res = await runQuery(queryEndpoint, resultsQuery(baseUrl));
         if (!res.results || !res.results.bindings || !Array.isArray(res.results.bindings)) {
@@ -163,9 +184,11 @@
             };
           }
 
-          const { name, description } = row;
+          const { name, description, endpoint, landingPage } = row;
           subs[subValue].name[extractLanguage(name)] = name?.value || null;
           subs[subValue].description[extractLanguage(description)] = description?.value || null;
+          subs[subValue].endpoint = endpoint?.value || null;
+          subs[subValue].landingPage = landingPage?.value || null;
         });
 
         return subs;
@@ -180,10 +203,14 @@
 
           const name = getLocalizedValue(entry.name, language);
           const description = getLocalizedValue(entry.description, language);
+          const endpoint = entry.endpoint || "";
+          const landingPage = fixUrl(entry.landingPage) || "";
 
           datasetsList.push({
             name,
             description,
+            endpoint,
+            landingPage,
           });
         });
       }
@@ -219,6 +246,24 @@
             datasetElem.className = "trifid-datasets-search-item";
             datasetElem.appendChild(datasetNameElem);
             datasetElem.appendChild(datasetDescriptionElem);
+
+            if (dataset.endpoint) {
+              const datasetEndpointElem = document.createElement("p");
+              datasetEndpointElem.textContent = `SPARQL endpoint: ${dataset.endpoint}`;
+              datasetElem.appendChild(datasetEndpointElem);
+            }
+
+            if (dataset.landingPage) {
+              const datasetLandingPageElem = document.createElement("p");
+              const datasetLandingPageLinkElem = document.createElement("a");
+              datasetLandingPageLinkElem.href = dataset.landingPage;
+              datasetLandingPageLinkElem.target = "_blank";
+              datasetLandingPageLinkElem.rel = "noreferrer noopener";
+              datasetLandingPageLinkElem.textContent = "Info";
+              datasetLandingPageElem.appendChild(datasetLandingPageLinkElem);
+              datasetElem.appendChild(datasetLandingPageElem);
+            }
+
             datasetsResultsElem.appendChild(datasetElem);
           });
       }
