@@ -6,6 +6,7 @@
       @import url("/static-assets/search.css");
     </style>
 
+    <input id="datasets-search" type="text" placeholder="Search…" />
     <div id="datasets-results"></div>
     <div id="datasets-results-count"></div>
 
@@ -50,39 +51,6 @@
             FILTER(NOT EXISTS { ?sub schema:creativeWorkStatus <${baseUrl}/definedTerm/CreativeWorkStatus/Draft>. })
           }
         `;
-
-        return `
-          PREFIX  schema: <http://schema.org/>
-          PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-          prefix  void: <http://rdfs.org/ns/void#>
-
-          SELECT {
-            ?sub ?pred ?obj ?oname
-          }
-          WHERE {
-            {
-              SELECT DISTINCT ?sub WHERE {
-                {
-                  SELECT ?sub WHERE {
-                    ?sub (schema:name|schema:description) ?name;
-                      rdf:type ?resultType.
-                    FILTER(?resultType IN(void:Dataset))
-                    FILTER(NOT EXISTS { ?sub schema:expires ?x. })
-                    FILTER(NOT EXISTS { ?sub schema:creativeWorkStatus <${baseUrl}/definedTerm/CreativeWorkStatus/Draft>. })
-                  }
-                  ORDER BY (?resultType) (?name)
-                }
-              }
-              LIMIT 20
-            }
-            SERVICE <db://lindas> {
-              {
-                ?sub ?pred ?obj.
-                OPTIONAL { ?obj schema:name ?oname. }
-              }
-            }
-          }
-        `
       }
 
       // run a SPARQL query
@@ -107,6 +75,7 @@
       const queryEndpoint = new URL("/query", window.location.href);
       const baseUrl = currentUrl.origin;
 
+      let numberOfRecords = 0;
       let datasetsList = [];
 
       const getNumberOfRecords = async () => {
@@ -221,38 +190,58 @@
 
       const datasetsResultsElem = document.getElementById("datasets-results");
       const datasetsResultsCountElem = document.getElementById("datasets-results-count");
+      const datasetsSearchElem = document.getElementById("datasets-search");
 
       const displayResults = () => {
         datasetsResultsElem.textContent = "";
 
-        datasetsList.map((dataset) => {
-          const datasetNameElem = document.createElement("p");
-          datasetNameElem.textContent = dataset.name;
-          datasetNameElem.className = "trifid-datasets-search-name";
+        const searchValue = datasetsSearchElem.value.trim().toLocaleLowerCase();
 
-          const datasetDescriptionElem = document.createElement("p");
-          datasetDescriptionElem.textContent = dataset.description;
-          datasetDescriptionElem.className = "trifid-datasets-search-description";
+        datasetsList
+          .filter((dataset) => {
+            if (!searchValue) {
+              return true;
+            }
 
-          const datasetElem = document.createElement("div");
-          datasetElem.className = "trifid-datasets-search-item";
-          datasetElem.appendChild(datasetNameElem);
-          datasetElem.appendChild(datasetDescriptionElem);
-          datasetsResultsElem.appendChild(datasetElem);
-        });
+            return dataset.name?.toLocaleLowerCase().includes(searchValue)
+              || dataset.description?.toLocaleLowerCase().includes(searchValue);
+          })
+          .map((dataset) => {
+            const datasetNameElem = document.createElement("p");
+            datasetNameElem.textContent = dataset.name;
+            datasetNameElem.className = "trifid-datasets-search-name";
+
+            const datasetDescriptionElem = document.createElement("p");
+            datasetDescriptionElem.textContent = dataset.description;
+            datasetDescriptionElem.className = "trifid-datasets-search-description";
+
+            const datasetElem = document.createElement("div");
+            datasetElem.className = "trifid-datasets-search-item";
+            datasetElem.appendChild(datasetNameElem);
+            datasetElem.appendChild(datasetDescriptionElem);
+            datasetsResultsElem.appendChild(datasetElem);
+          });
       }
+
+      datasetsSearchElem.addEventListener("change", displayResults);
+      datasetsSearchElem.addEventListener("keydown", displayResults);
+      datasetsSearchElem.addEventListener("keyup", displayResults);
 
       (async () => {
         datasetsResultsElem.textContent = "Loading…";
 
-        // get the number of results
-        const numberOfRecords = await getNumberOfRecords();
-        datasetsResultsCountElem.textContent = `${numberOfRecords} results`;
+        try {
+          // get the number of results
+          numberOfRecords = await getNumberOfRecords();
+          datasetsResultsCountElem.textContent = `${numberOfRecords} results`;
 
-        // depending of the number, load the results
-        const results = await getResults();
-        updateDatasetsList(results, currentLanguage);
-        displayResults();
+          // depending of the number, load the results
+          const results = await getResults();
+          updateDatasetsList(results, currentLanguage);
+          displayResults();
+        } catch (_e) {
+          datasetsResultsElem.textContent = "Something went wrong while fetching the list of datasets. Please retry later.";
+        }
       })();
     </script>
   </div>
