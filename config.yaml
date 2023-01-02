@@ -71,6 +71,11 @@ middlewares:
     module: trifid-plugin-graph-explorer
     paths: /graph-explorer
 
+  search:
+    module: file:plugins/search/index.js
+    paths:
+      - /datasets
+
   sparql-proxy:
     module: "@zazuko/trifid-plugin-sparql-proxy"
     paths: /query
