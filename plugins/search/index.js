@@ -10,9 +10,11 @@ const factory = async (trifid) => {
 
   // serve static files for zack-search
   const zackSearchPath = await resolve('zack-search', import.meta.url)
-  console.log(zackSearchPath)
   server.use('/datasets-assets/zack.js', express.static(zackSearchPath.replace(/^file:\/\//, '')))
-  server.use('/shape/', express.static(`${currentDir}/shape/`))
+  server.use('/datasets/shape/', express.static(`${currentDir}/shape/`))
+  server.use('/datasets/components/', express.static(`${currentDir}/components/`))
+  server.use('/datasets/lib/', express.static(`${currentDir}/lib/`))
+  server.use('/datasets/templates/', express.static(`${currentDir}/templates/`))
   server.use('/datasets-public-assets/', express.static(`${currentDir}/public/`))
 
   return async (_req, res, _next) => {
