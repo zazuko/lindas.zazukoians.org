@@ -75,7 +75,6 @@ middlewares:
     module: file:plugins/search/index.js
     paths:
       - /datasets
-      - /datasets-int
 
   sparql-proxy:
     module: "@zazuko/trifid-plugin-sparql-proxy"
