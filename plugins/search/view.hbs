@@ -295,7 +295,7 @@
             // Dataset contact
             if (dataset.contactName) {
               const datasetContactElem = document.createElement("p");
-              datasetContactElem.textContent = dataset.contactName;
+              datasetContactElem.textContent = `Contact: ${dataset.contactName}`;
               datasetContactElem.className = "trifid-datasets-search-contact";
               datasetElem.appendChild(datasetContactElem);
             }
