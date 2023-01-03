@@ -6,7 +6,7 @@
       @import url("/static-assets/search.css");
     </style>
 
-    <input id="datasets-search" type="text" placeholder="Search…" />
+    <input id="datasets-search" type="text" placeholder="Filter datasets list…" />
     <div id="datasets-results"></div>
     <div id="datasets-results-count"></div>
 
@@ -244,8 +244,6 @@
             dateModified,
           });
         });
-
-        console.log(datasetsList);
       }
 
       const createLinkElem = (url, value) => {
@@ -360,7 +358,6 @@
           updateDatasetsList(results, currentLanguage);
           displayResults();
         } catch (_e) {
-          console.error(_e);
           datasetsResultsElem.textContent = "Something went wrong while fetching the list of datasets. Please retry later.";
         }
       })();
