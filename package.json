@@ -21,10 +21,6 @@
     "trifid-plugin-yasgui": "^2.2.1",
     "unified": "^10.1.2"
   },
-  "peerDependencies": {
-    "express": "^4.18.2",
-    "import-meta-resolve": "^2.2.0"
-  },
   "license": "UNLICENSED",
   "scripts": {
     "start": "trifid-core",

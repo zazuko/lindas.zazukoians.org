@@ -130,3 +130,11 @@ middlewares:
             fr: file:content/sparql/fr.md
             de: file:content/sparql/de.md
             it: file:content/sparql/it.md
+
+        # used at /datasets/
+        - name: datasets
+          paths:
+            en: file:content/datasets/en.md
+            fr: file:content/datasets/fr.md
+            de: file:content/datasets/de.md
+            it: file:content/datasets/it.md
