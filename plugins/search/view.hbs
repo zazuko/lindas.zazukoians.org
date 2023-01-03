@@ -55,6 +55,22 @@
               ?sub dcat:landingPage ?landingPage.
             }
 
+            OPTIONAL {
+              ?sub schema:contactPoint/schema:name ?contactName.
+            }
+
+            OPTIONAL {
+              ?sub schema:dateCreated ?dateCreated.
+            }
+
+            OPTIONAL {
+              ?sub schema:datePublished ?datePublished.
+            }
+
+            OPTIONAL {
+              ?sub schema:dateModified ?dateModified.
+            }
+
             FILTER(?resultType IN(void:Dataset))
             FILTER(NOT EXISTS { ?sub schema:expires ?x. })
             FILTER(NOT EXISTS { ?sub schema:creativeWorkStatus <${baseUrl}/definedTerm/CreativeWorkStatus/Draft>. })
@@ -184,11 +200,16 @@
             };
           }
 
-          const { name, description, endpoint, landingPage } = row;
+          const { name, description, endpoint, landingPage, contactName, dateCreated, datePublished, dateModified, dataset } = row;
+          subs[subValue].uri = subValue;
           subs[subValue].name[extractLanguage(name)] = name?.value || null;
           subs[subValue].description[extractLanguage(description)] = description?.value || null;
           subs[subValue].endpoint = endpoint?.value || null;
           subs[subValue].landingPage = landingPage?.value || null;
+          subs[subValue].contactName = contactName?.value || null;
+          subs[subValue].dateCreated = dateCreated?.value || null;
+          subs[subValue].datePublished = datePublished?.value || null;
+          subs[subValue].dateModified = dateModified?.value || null;
         });
 
         return subs;
@@ -201,18 +222,39 @@
         Object.entries(results).map((result) => {
           const entry = result[1];
 
+          const uri = fixUrl(entry.uri);
           const name = getLocalizedValue(entry.name, language);
           const description = getLocalizedValue(entry.description, language);
           const endpoint = entry.endpoint || "";
           const landingPage = fixUrl(entry.landingPage) || "";
+          const contactName = entry.contactName || "";
+          const dateCreated = entry.dateCreated || "";
+          const datePublished = entry.datePublished || "";
+          const dateModified = entry.dateModified || "";
 
           datasetsList.push({
+            uri,
             name,
             description,
             endpoint,
             landingPage,
+            contactName,
+            dateCreated,
+            datePublished,
+            dateModified,
           });
         });
+
+        console.log(datasetsList);
+      }
+
+      const createLinkElem = (url, value) => {
+        const linkElem = document.createElement("a");
+        linkElem.href = url;
+        linkElem.target = "_blank";
+        linkElem.rel = "noreferrer noopener";
+        linkElem.textContent = value;
+        return linkElem;
       }
 
       const datasetsResultsElem = document.getElementById("datasets-results");
@@ -234,32 +276,65 @@
               || dataset.description?.toLocaleLowerCase().includes(searchValue);
           })
           .map((dataset) => {
-            const datasetNameElem = document.createElement("p");
-            datasetNameElem.textContent = dataset.name;
-            datasetNameElem.className = "trifid-datasets-search-name";
-
-            const datasetDescriptionElem = document.createElement("p");
-            datasetDescriptionElem.textContent = dataset.description;
-            datasetDescriptionElem.className = "trifid-datasets-search-description";
-
             const datasetElem = document.createElement("div");
             datasetElem.className = "trifid-datasets-search-item";
-            datasetElem.appendChild(datasetNameElem);
-            datasetElem.appendChild(datasetDescriptionElem);
 
+            // Dataset name
+            const datasetNameElem = document.createElement("p");
+            datasetNameElem.className = "trifid-datasets-search-name";
+            const datasetNameLinkElem = createLinkElem(dataset.uri, dataset.name);
+            datasetNameElem.appendChild(datasetNameLinkElem);
+            datasetElem.appendChild(datasetNameElem);
+
+            // Dataset description
+            if (dataset.description) {
+              const datasetDescriptionElem = document.createElement("p");
+              datasetDescriptionElem.textContent = dataset.description;
+              datasetDescriptionElem.className = "trifid-datasets-search-description";
+              datasetElem.appendChild(datasetDescriptionElem);
+            }
+
+            // Dataset contact
+            if (dataset.contactName) {
+              const datasetContactElem = document.createElement("p");
+              datasetContactElem.textContent = dataset.contactName;
+              datasetContactElem.className = "trifid-datasets-search-contact";
+              datasetElem.appendChild(datasetContactElem);
+            }
+
+            // Dataset dates
+            if (dataset.dateCreated || dataset.datePublished || dataset.dateModified) {
+              const datasetDatesElem = document.createElement("p");
+              const datasetDates = [];
+              if (dataset.dateCreated) {
+                datasetDates.push(`Created: ${dataset.dateCreated}`);
+              }
+              if (dataset.datePublished) {
+                datasetDates.push(`Published: ${dataset.datePublished}`);
+              }
+              if (dataset.dateModified) {
+                datasetDates.push(`Modified: ${dataset.dateModified}`);
+              }
+              datasetDatesElem.textContent = datasetDates.join(" - ");
+              datasetDatesElem.className = "trifid-datasets-search-dates";
+              datasetElem.appendChild(datasetDatesElem);
+            }
+
+            // Dataset SPARQL endpoint
             if (dataset.endpoint) {
               const datasetEndpointElem = document.createElement("p");
-              datasetEndpointElem.textContent = `SPARQL endpoint: ${dataset.endpoint}`;
+              datasetEndpointElem.textContent = "SPARQL endpoint: ";
+              datasetEndpointElem.className = "trifid-datasets-search-endpoint";
+              const datasetEndpointLinkElem = createLinkElem(dataset.endpoint, dataset.endpoint);
+              datasetEndpointElem.appendChild(datasetEndpointLinkElem);
               datasetElem.appendChild(datasetEndpointElem);
             }
 
+            // Landing page for the dataset
             if (dataset.landingPage) {
               const datasetLandingPageElem = document.createElement("p");
-              const datasetLandingPageLinkElem = document.createElement("a");
-              datasetLandingPageLinkElem.href = dataset.landingPage;
-              datasetLandingPageLinkElem.target = "_blank";
-              datasetLandingPageLinkElem.rel = "noreferrer noopener";
-              datasetLandingPageLinkElem.textContent = "Info";
+              datasetLandingPageElem.className = "trifid-datasets-search-landing-page";
+              const datasetLandingPageLinkElem = createLinkElem(dataset.landingPage, "More info");
               datasetLandingPageElem.appendChild(datasetLandingPageLinkElem);
               datasetElem.appendChild(datasetLandingPageElem);
             }
@@ -285,6 +360,7 @@
           updateDatasetsList(results, currentLanguage);
           displayResults();
         } catch (_e) {
+          console.error(_e);
           datasetsResultsElem.textContent = "Something went wrong while fetching the list of datasets. Please retry later.";
         }
       })();
