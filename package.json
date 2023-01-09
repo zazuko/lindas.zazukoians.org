@@ -18,6 +18,7 @@
     "trifid-core": "^2.3.3",
     "trifid-handler-sparql": "^2.1.0",
     "trifid-plugin-graph-explorer": "^1.0.2",
+    "trifid-plugin-spex": "^1.0.1",
     "trifid-plugin-yasgui": "^2.2.1",
     "unified": "^10.1.2"
   },
