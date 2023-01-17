@@ -1,27 +1,21 @@
 <html>
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{#if title}}{{title}}{{else}}Trifid{{/if}}</title>
-    <link rel="icon" href="/swiss-assets/img/ico/favicon.ico" />
-    <link rel="stylesheet" href="/static-assets/style.css" />
-  </head>
-
-  <body>
-    <div class="page">
-      {{#unless disableHeader}}
-        {{{header}}}
-      {{/unless}}
-
-      <main class="trifid-main">
+<head>
+  <meta charset="utf-8">
+  <title>{{#if title}}{{title}}{{else}}Trifid{{/if}}</title>
+  <link rel="stylesheet" href="https://liip-bund-ds.fra1.digitaloceanspaces.com/v0.5.20/main.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+{{#unless disableHeader}}
+{{{header}}}
+{{/unless}}
+  <main id="main-content" class="trifid-main">
+    <section class="hero hero--default "><div class="container container--grid gap--responsive"><div class="hero__content">
         {{{body}}}
-      </main>
-
-      {{#unless disableFooter}}
-        {{{footer}}}
-      {{/unless}}
-    </div>
-  </body>
-
+    </div></div></section>
+  </main>
+{{#unless disableFooter}}
+{{{footer}}}
+{{/unless}}
+</body>
 </html>
