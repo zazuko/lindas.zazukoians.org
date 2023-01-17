@@ -3,8 +3,31 @@
     <style type="text/css">
       @import url("/static-assets/entity.css");
     </style>
-    <div class="trifid-entity-renderer">
+
+    {{#if entityLabel}}
+      <div class="entity-header">
+        <h2>{{entityLabel}}</h2>
+        <a href="{{entityUrl}}">{{entityUrl}}</a>
+      </div>
+    {{/if}}
+
+    <div class="entity-body">
       {{{dataset}}}
     </div>
+
+    {{#if metadata.namedGraphs}}
+      <div class="metadata">
+        <div class="metadata-title">Named graphs</div>
+        <div class="metadata-table">
+          {{#each metadata.namedGraphs}}
+            <div class="metadata-row">
+              <div>{{this.namedGraphLabel}}</div>
+              <div>{{this.quadsCount}}</div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+
   </div>
 </div>
