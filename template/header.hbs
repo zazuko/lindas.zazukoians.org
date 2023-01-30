@@ -44,30 +44,14 @@
 <!--
 <nav class="trifid-main-navigation">
   <ul>
+    {{#each locals.menu.header}}
     <li>
       <a
-        href="/"
-        {{#ifEquals locals.currentPath "/"}}class="active"{{/ifEquals}}
-      >About LINDAS</a>
+        href="{{ this.path }}"
+        {{#ifEquals ../locals.currentPath this.path}}class="active"{{/ifEquals}}
+      >{{ this.title }}</a>
     </li>
-    <li>
-      <a
-        href="/datasets/"
-        {{#ifEquals locals.currentPath "/datasets/"}}class="active"{{/ifEquals}}
-      >Datacatalog</a>
-    </li>
-    <li>
-      <a
-        href="/sparql/"
-        {{#ifEquals locals.currentPath "/sparql/"}}class="active"{{/ifEquals}}
-      >Query Data</a>
-    </li>
-    <li>
-      <a
-        href="/publish/"
-        {{#ifEquals locals.currentPath "/publish/"}}class="active"{{/ifEquals}}
-      >Publish Data</a>
-    </li>
+    {{/each}}
   </ul>
 </nav>
 -->

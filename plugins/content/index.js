@@ -112,7 +112,7 @@ const factory = async (trifid) => {
       res.locals['content-plugin'] = {}
     }
 
-    // add all configured entried for the specified namespace
+    // add all configured entries for the specified namespace
     const lang = res?.locals?.currentLanguage || 'en'
     res.locals['content-plugin'][configuredNamespace] = entriesForLanguage(store, lang)
 
