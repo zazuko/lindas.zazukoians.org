@@ -102,6 +102,17 @@ middlewares:
       resourceGraphQuery: "#pragma describe.strategy cbd\nDESCRIBE <${iri}>"
       containerGraphQuery: 'CONSTRUCT { ?s a ?o. ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label. } WHERE { ?s a ?o. OPTIONAL {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.} FILTER REGEX(STR(?s), "^${iri}") }'
 
+  i18n:
+    module: trifid-plugin-i18n
+    order: 5
+    config:
+      directory: file:locales
+      locales:
+        - en
+        - fr
+        - de
+        - it
+
   menu:
     module: file:plugins/menu/index.js
     order: 80
