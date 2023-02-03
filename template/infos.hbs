@@ -1,7 +1,16 @@
 <style>
+  #partial-infos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   #partial-infos #partials-infos-menu {
     display: flex;
+    position: relative;
+    top: 1px;
   }
+
   #partial-infos #partials-infos-menu > button {
     cursor: pointer;
     color: #757575;
@@ -10,19 +19,34 @@
     padding: 10 15px;
     margin-top: 2px;
   }
+
   #partial-infos #partials-infos-menu > button:hover {
     color: #dc0018;
     border-top: 3px solid #dc0018;
     margin-top: 0px;
   }
+
   #partial-infos #partials-infos-menu > button.active {
     color: #dc0018;
     background-color: #fff;
     border-top: 3px solid #dc0018;
+    border-bottom: 1px solid #fff;
     margin-top: 0px;
   }
+
   #partial-infos #partials-infos-content > div:not(:first-child) {
     display: none;
+  }
+
+  #partial-infos #partials-infos-content {
+    border: 1px solid #ccc;
+    padding: 8px;
+    display: flex;
+  }
+
+  #partial-infos #partials-infos-content img {
+    width: auto;
+    max-width: 100%;
   }
 </style>
 
@@ -61,11 +85,22 @@
         e.stopPropagation();
         e.preventDefault();
 
+        const tabs = Array.from(infosMenuElement.children);
+
         infosContentItems.map((item) => {
           item.style.display = "none";
         });
 
+        tabs.map((item) => {
+          item.classList.remove("active");
+        });
+
         infosContentItems[i].style.display = "block";
+        tabs[i].classList.add("active");
       })
     });
+
+  if (infosMenuElement.children.length > 0) {
+    Array.from(infosMenuElement.children)[0].classList.add("active");
+  }
 </script>
