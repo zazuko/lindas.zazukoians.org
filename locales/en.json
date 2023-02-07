@@ -1,3 +1,7 @@
 {
-	"welcome": "welcome"
+	"welcome": "welcome",
+	"About": "About",
+	"Datacatalog": "Datacatalog",
+	"Query Data": "Query Data",
+	"Publish Data": "Publish Data"
 }

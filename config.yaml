@@ -122,28 +122,13 @@ middlewares:
       namespace: header
       entries:
         - path: /
-          title:
-            default: About
-            en: About
-            fr: Introduction
-            de: Einführung
-            it: Introduzione
+          label: About
         - path: /datasets/
-          title:
-            default: Datacatalog
-            en: Datacatalog
-            fr: Jeux de données
-            de: Daten Katalog
-            it: Dataset
+          label: Datacatalog
         - path: /sparql/
-          title:
-            default: Query Data
-            en: Query Data
-            fr: Consulter des données
-            de: Daten Abfragen
-            it: Consultare i dati
+          label: Query Data
         - path: /publish/
-          title: Publish Data
+          label: Publish Data
 
   content:
     module: file:plugins/content/index.js

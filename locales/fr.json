@@ -1,3 +1,7 @@
 {
-	"welcome": "bienvenue"
+	"welcome": "bienvenue",
+	"About": "Introduction",
+	"Datacatalog": "Jeux de données",
+	"Query Data": "Consulter des données",
+	"Publish Data": "Publish Data"
 }
