@@ -119,6 +119,22 @@ const entriesForLanguage = (store, language = 'en') => {
   return finalStore
 }
 
+const contentMiddleware = ({ logger, namespace, store }) => async (_req, res, next) => {
+  logger.debug(`loaded store into '${namespace}' namespace`)
+
+  // just make sure that the `content-plugin` entry exists
+  if (!res.locals['content-plugin']) {
+    res.locals['content-plugin'] = {}
+  }
+
+  // add all configured entries for the specified namespace
+  const lang = res?.locals?.currentLanguage || 'en'
+  res.locals['content-plugin'][namespace] = entriesForLanguage(store, lang)
+
+  // let's forward all of this to other middlewares
+  return next()
+}
+
 const factory = async (trifid) => {
   const { config, logger } = trifid
   const { namespace, directory } = config
@@ -136,21 +152,7 @@ const factory = async (trifid) => {
     store[item.name] = await getContent(item.path)
   }
 
-  return async (_req, res, next) => {
-    logger.debug(`loaded store into '${configuredNamespace}' namespace`)
-
-    // just make sure that the `content-plugin` entry exists
-    if (!res.locals['content-plugin']) {
-      res.locals['content-plugin'] = {}
-    }
-
-    // add all configured entries for the specified namespace
-    const lang = res?.locals?.currentLanguage || 'en'
-    res.locals['content-plugin'][configuredNamespace] = entriesForLanguage(store, lang)
-
-    // let's forward all of this to other middlewares
-    return next()
-  }
+  return contentMiddleware({ logger, namespace: configuredNamespace, store })
 }
 
 export default factory
