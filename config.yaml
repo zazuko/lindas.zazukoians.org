@@ -31,6 +31,7 @@ middlewares:
       directory: file:static
 
   rewrite:
+    order: 200
     module: trifid-core/middlewares/rewrite.js
 
   welcome:
@@ -58,6 +59,7 @@ middlewares:
       labelLoader:
         labelNamespaces: # Labels will be fetched for URIs that start with this list (if omitted, fetches for all URIs)
           - https://lindas.zazukoians.org
+          - https://ld.admin.ch
         chunkSize: 30
         concurrency: 2
         timeout: 4000
@@ -148,7 +150,8 @@ middlewares:
     order: 80
     config:
       namespace: lindas
-      entries: # used on homepage (path: /)
+      entries:
+        # used on homepage (path: /)
         - name: about-lindas
           paths:
             default: file:content/about-lindas/en.md
