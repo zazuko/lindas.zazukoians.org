@@ -1,11 +1,14 @@
 import { promises as fs } from 'fs';
-import { join as pathJoin } from 'path';
+import { dirname, join as pathJoin } from 'path';
+import { fileURLToPath } from 'url'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
+
+const currentDir = dirname(fileURLToPath(import.meta.url))
 
 /**
  * Return a HTML string from a Markdown string.
@@ -136,14 +139,15 @@ const contentMiddleware = ({ logger, namespace, store }) => async (_req, res, ne
 }
 
 const factory = async (trifid) => {
-  const { config, logger } = trifid
-  const { namespace, directory } = config
+  const { config, logger, server, render } = trifid
+  const { namespace, directory, mountPath } = config
 
   // check config
   const configuredNamespace = namespace ?? 'default';
   if (!directory || typeof directory !== 'string') {
     throw new Error(`'directory' should be a non-empty string`)
   }
+  const mountAtPath = mountPath || false
 
   const store = {}
   const items = await getItems(directory)
@@ -152,7 +156,27 @@ const factory = async (trifid) => {
     store[item.name] = await getContent(item.path)
   }
 
-  return contentMiddleware({ logger, namespace: configuredNamespace, store })
+  // apply the middleware in all cases
+  server.use(contentMiddleware({ logger, namespace: configuredNamespace, store }))
+
+  // create a route for each entry
+  if (mountAtPath) {
+    const mountAtPathSlash = mountAtPath.endsWith('/') ? mountAtPath : `${mountAtPath}/`
+
+    for (const item of items) {
+      server.get(`${mountAtPathSlash}${item.name}`, async (_req, res, _next) => {
+        res.send(await render(`${currentDir}/../../views/content.hbs`, {
+          content: res.locals['content-plugin'][namespace][item.name] || '',
+          locals: res.locals
+        }))
+      })
+    }
+  }
+
+  // just return a dummy middleware
+  return (_req, _res, next) => {
+    next()
+  }
 }
 
 export default factory
