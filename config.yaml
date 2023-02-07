@@ -31,6 +31,7 @@ middlewares:
       directory: file:static
 
   rewrite:
+    order: 200
     module: trifid-core/middlewares/rewrite.js
 
   welcome:
@@ -56,11 +57,12 @@ middlewares:
     config:
       path: views/entity.hbs
       labelLoader:
-        labelNamespaces:
+        labelNamespaces: # Labels will be fetched for URIs that start with this list (if omitted, fetches for all URIs)
+          - https://lindas.zazukoians.org
           - https://ld.admin.ch
         chunkSize: 30
         concurrency: 2
-        timeout: 1000
+        timeout: 4000
 
   yasgui:
     module: trifid-plugin-yasgui
