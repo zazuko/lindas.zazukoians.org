@@ -136,3 +136,27 @@ middlewares:
     config:
       namespace: lindas
       directory: file:content/template-parts
+  content-root:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-root
+      directory: file:content/root-pages
+  content-documentation:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-documentation
+      directory: file:content/documentation
+  content-governance:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-governance
+      directory: file:content/governance
+  content-technology:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-technology
+      directory: file:content/technology
