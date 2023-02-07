@@ -56,11 +56,11 @@ middlewares:
     config:
       path: views/entity.hbs
       labelLoader:
-        labelNamespaces:
-          - https://ld.admin.ch
+        labelNamespaces: # Labels will be fetched for URIs that start with this list (if omitted, fetches for all URIs)
+          - https://lindas.zazukoians.org
         chunkSize: 30
         concurrency: 2
-        timeout: 1000
+        timeout: 4000
 
   yasgui:
     module: trifid-plugin-yasgui
@@ -148,8 +148,7 @@ middlewares:
     order: 80
     config:
       namespace: lindas
-      entries:
-        # used on homepage (path: /)
+      entries: # used on homepage (path: /)
         - name: about-lindas
           paths:
             default: file:content/about-lindas/en.md
