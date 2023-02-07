@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import { join as pathJoin } from 'path';
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkFrontmatter from 'remark-frontmatter'
@@ -25,19 +26,60 @@ const convertToHtml = async (markdownString) => {
 }
 
 /**
- * Load all files into the store.
+ * Get all subdirectories of that particular directory.
  *
- * @param {Record<string, any>} store
- * @param {string} name
- * @param {Record<string, any>} paths
+ * @param {string} path path of the starting directory
+ * @returns list of all directories present in that directory
  */
-const dataLoader = async (store, name, paths) => {
-  store[name] = {}
+const getItems = async (path) => {
+  const directories = []
 
-  for (const [variable, path] of Object.entries(paths)) {
-    const content = await fs.readFile(path, 'utf-8')
-    store[name][variable] = await convertToHtml(content)
+  const pathContent = await fs.readdir(path, { withFileTypes: true })
+
+  for (const item of pathContent) {
+    if (!item.isDirectory()) {
+      continue
+    }
+    const fullPath = pathJoin(path, item.name)
+    directories.push({
+      name: item.name,
+      path: fullPath
+    })
   }
+
+  return directories
+}
+
+/**
+ * Read all markdown files from a directory and convert them in HTML format.
+ *
+ * @param {string} path path of the directory to read
+ * @returns list of files that are in that directory
+ */
+const getContent = async (path) => {
+  const files = []
+
+  const pathContent = await fs.readdir(path, { withFileTypes: true })
+
+  for (const item of pathContent) {
+    if (item.isDirectory()) {
+      continue
+    }
+    const fullPath = pathJoin(path, item.name)
+    if (!fullPath.endsWith('.md')) {
+      continue
+    }
+
+    const content = await fs.readFile(fullPath, 'utf-8')
+    const html = await convertToHtml(content)
+    files.push({
+      language: item.name.replace(/\.md*/, ''),
+      path: fullPath,
+      html
+    })
+  }
+
+  return files
 }
 
 /**
@@ -50,23 +92,28 @@ const dataLoader = async (store, name, paths) => {
 const entriesForLanguage = (store, language = 'en') => {
   const finalStore = {}
 
-  for (const [key, path] of Object.entries(store)) {
-    if (!path) {
-      finalStore[key] = ''
-      continue
+  for (const [key, item] of Object.entries(store)) {
+    let value = null
+    let fallbackValue = null
+
+    item.map((item) => {
+      if (item.language === language) {
+        value = item.html
+      }
+      if (item.language === 'default') {
+        fallbackValue = item.html
+      }
+    })
+
+    if (value === null && fallbackValue !== null) {
+      value = fallbackValue
     }
 
-    if (path[language]) {
-      finalStore[key] = path[language]
-      continue
+    if (value === null) {
+      value = ''
     }
 
-    if (path['default']) {
-      finalStore[key] = path['default']
-      continue
-    }
-
-    finalStore[key] = ''
+    finalStore[key] = value
   }
 
   return finalStore
@@ -74,34 +121,19 @@ const entriesForLanguage = (store, language = 'en') => {
 
 const factory = async (trifid) => {
   const { config, logger } = trifid
-  const { namespace, entries } = config
+  const { namespace, directory } = config
 
-  if (!entries || !Array.isArray(entries)) {
-    throw new Error(`'entries' should be a non-empty array`)
+  // check config
+  const configuredNamespace = namespace ?? 'default';
+  if (!directory || typeof directory !== 'string') {
+    throw new Error(`'directory' should be a non-empty string`)
   }
 
-  const configuredNamespace = namespace ?? 'default';
   const store = {}
+  const items = await getItems(directory)
 
-  for (const entry of entries) {
-    const { name, paths } = entry
-    if (!name || typeof name !== 'string') {
-      throw new Error(`'name' should be a non-empty string`)
-    }
-
-    if (typeof paths === 'string') {
-      await dataLoader(store, name, {
-        default: paths
-      })
-      continue
-    }
-
-    if (paths) {
-      await dataLoader(store, name, paths)
-      continue
-    }
-
-    throw new Error(`entry '${name}' don't have a valid 'paths' array property configured`)
+  for (const item of items) {
+    store[item.name] = await getContent(item.path)
   }
 
   return async (_req, res, next) => {

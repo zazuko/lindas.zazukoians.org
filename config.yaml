@@ -135,44 +135,4 @@ middlewares:
     order: 80
     config:
       namespace: lindas
-      entries:
-        # used on homepage (path: /)
-        - name: about-lindas
-          paths:
-            default: file:content/about-lindas/en.md
-            en: file:content/about-lindas/en.md
-            fr: file:content/about-lindas/fr.md
-            de: file:content/about-lindas/de.md
-            it: file:content/about-lindas/it.md
-        - name: linked-data
-          paths:
-            default: file:content/linked-data/en.md
-            en: file:content/linked-data/en.md
-            fr: file:content/linked-data/fr.md
-            de: file:content/linked-data/de.md
-            it: file:content/linked-data/it.md
-
-        # used at /publish/
-        - name: publish
-          paths:
-            default: file:content/publish/en.md
-            en: file:content/publish/en.md
-            fr: file:content/publish/fr.md
-            de: file:content/publish/de.md
-            it: file:content/publish/it.md
-
-        # used at /sparql/
-        - name: sparql
-          paths:
-            en: file:content/sparql/en.md
-            fr: file:content/sparql/fr.md
-            de: file:content/sparql/de.md
-            it: file:content/sparql/it.md
-
-        # used at /datasets/
-        - name: datasets
-          paths:
-            en: file:content/datasets/en.md
-            fr: file:content/datasets/fr.md
-            de: file:content/datasets/de.md
-            it: file:content/datasets/it.md
+      directory: file:content/template-parts
