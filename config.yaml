@@ -6,6 +6,8 @@ template:
     main: file:template/main.hbs
     header: file:template/header.hbs
     footer: file:template/footer.hbs
+  partials:
+    infos: file:template/infos.hbs
   title: LINDAS - Linked Data Service
 
 globals:
@@ -99,6 +101,17 @@ middlewares:
       containerExistsQuery: 'ASK { ?s a ?o. FILTER REGEX(STR(?s), "^${iri}") }'
       resourceGraphQuery: "#pragma describe.strategy cbd\nDESCRIBE <${iri}>"
       containerGraphQuery: 'CONSTRUCT { ?s a ?o. ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label. } WHERE { ?s a ?o. OPTIONAL {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.} FILTER REGEX(STR(?s), "^${iri}") }'
+
+  i18n:
+    module: trifid-plugin-i18n
+    order: 5
+    config:
+      directory: file:locales
+      locales:
+        - en
+        - fr
+        - de
+        - it
 
   menu:
     module: file:plugins/menu/index.js

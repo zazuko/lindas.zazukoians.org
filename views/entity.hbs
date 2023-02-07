@@ -1,7 +1,7 @@
 <div class="trifid-content">
   <div class="container">
     <style type="text/css">
-      @import url("/static-assets/entity.css");
+      @import url("/static-assets/css/entity.css");
     </style>
 
     {{#if entityLabel}}
@@ -21,7 +21,12 @@
         <div class="metadata-table">
           {{#each metadata.namedGraphs}}
             <div class="metadata-row">
-              <div>{{this.namedGraphLabel}}</div>
+              {{#if this.namedGraph}}
+                <div><a href="{{this.namedGraph}}">{{this.namedGraphLabel}}</a></div>
+              {{/if}}
+              {{#unless this.namedGraph}}
+                <div>{{this.namedGraphLabel}}</div>
+              {{/unless}}
               <div>{{this.quadsCount}}</div>
             </div>
           {{/each}}
