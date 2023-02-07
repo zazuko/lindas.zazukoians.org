@@ -31,7 +31,6 @@ middlewares:
       directory: file:static
 
   rewrite:
-    order: 200
     module: trifid-core/middlewares/rewrite.js
 
   welcome:
@@ -89,6 +88,7 @@ middlewares:
     paths: /query
     config:
       queryOperation: postQueryUrlencoded
+      rewriteQueries: true
       cache:
         prefix: lindas-zazukoians-org
         url: env:SPARQL_PROXY_CACHE_URL
