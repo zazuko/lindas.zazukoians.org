@@ -1,19 +1,21 @@
-<div class="trifid-content">
-  <div class="container">
+<p class="meta-info">
+	<span class="meta-info__item"><a href="{{entityUrl}}">{{entityUrl}}</a></span>
+</p>
+<h1 class="hero__title">
+  {{entityLabel}}
+</h1>
+
+<div class="trifid-content container--grid gap--responsive">
+  <div class="container__full">
     <style type="text/css">
       @import url("/static-assets/css/entity.css");
     </style>
 
-    {{#if entityLabel}}
-      <div class="entity-header">
-        <h2>{{entityLabel}}</h2>
-        <a href="{{entityUrl}}">{{entityUrl}}</a>
-      </div>
-    {{/if}}
-
     <div class="entity-body">
       {{{dataset}}}
     </div>
+  </div>
+</div>
 
     {{#if metadata.namedGraphs}}
       <div class="metadata">
@@ -33,6 +35,3 @@
         </div>
       </div>
     {{/if}}
-
-  </div>
-</div>
