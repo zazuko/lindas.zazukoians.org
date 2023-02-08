@@ -1,26 +1,3 @@
-/**
- * Return all keys for the specific language.
- *
- * @param {Array} store
- * @param {string} language
- * @returns
- */
-const entriesForLanguage = (store, language = 'en') => {
-  return store.map((entry) => {
-    let title = '';
-    if (entry.title.hasOwnProperty(language)) {
-      title = entry.title[language]
-    } else if (entry.title.hasOwnProperty('default')) {
-      title = entry.title['default']
-    }
-
-    return {
-      path: entry.path || '',
-      title
-    }
-  })
-}
-
 const factory = async (trifid) => {
   const { config, logger } = trifid
   const { namespace, entries } = config
@@ -35,30 +12,19 @@ const factory = async (trifid) => {
   let i = 0
 
   for (const entry of entries) {
-    const { path, title } = entry
+    const { path, label } = entry
     if (!path || typeof path !== 'string') {
       throw new Error(`'path' should be a non-empty string`)
     }
 
-    if (typeof title === 'string') {
-      store.push({
-        path,
-        title: {
-          default: title
-        }
-      })
-      continue
+    if (!label || typeof label !== 'string') {
+      throw new Error(`'label' should be a non-empty string`)
     }
 
-    if (title) {
-      store.push({
-        path,
-        title
-      })
-      continue
-    }
-
-    throw new Error(`entry #${i} don't have a valid 'paths' array property configured`)
+    store.push({
+      path,
+      label
+    })
   }
 
   return (_req, res, next) => {
@@ -70,8 +36,7 @@ const factory = async (trifid) => {
     }
 
     // add all configured entries for the specified namespace
-    const lang = res?.locals?.currentLanguage || 'en'
-    res.locals.menu[configuredNamespace] = entriesForLanguage(store, lang)
+    res.locals.menu[configuredNamespace] = store
 
     // let's forward all of this to other middlewares
     return next()

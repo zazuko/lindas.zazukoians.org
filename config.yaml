@@ -31,7 +31,6 @@ middlewares:
       directory: file:static
 
   rewrite:
-    order: 200
     module: trifid-core/middlewares/rewrite.js
 
   welcome:
@@ -57,9 +56,9 @@ middlewares:
     config:
       path: views/entity.hbs
       labelLoader:
-        labelNamespaces: # Labels will be fetched for URIs that start with this list (if omitted, fetches for all URIs)
-          - https://lindas.zazukoians.org
-          - https://ld.admin.ch
+#        labelNamespaces: # Labels will be fetched for URIs that start with this list (if omitted, fetches for all URIs)
+#          - https://lindas.zazukoians.org
+#          - https://ld.admin.ch
         chunkSize: 30
         concurrency: 2
         timeout: 4000
@@ -89,6 +88,7 @@ middlewares:
     paths: /query
     config:
       queryOperation: postQueryUrlencoded
+      rewriteQueries: true
       cache:
         prefix: lindas-zazukoians-org
         url: env:SPARQL_PROXY_CACHE_URL
@@ -122,72 +122,45 @@ middlewares:
       namespace: header
       entries:
         - path: /
-          title:
-            default: About
-            en: About
-            fr: Introduction
-            de: Einführung
-            it: Introduzione
+          label: About
         - path: /datasets/
-          title:
-            default: Datacatalog
-            en: Datacatalog
-            fr: Jeux de données
-            de: Daten Katalog
-            it: Dataset
+          label: Datacatalog
         - path: /sparql/
-          title:
-            default: Query Data
-            en: Query Data
-            fr: Consulter des données
-            de: Daten Abfragen
-            it: Consultare i dati
+          label: Query Data
         - path: /publish/
-          title: Publish Data
+          label: Publish Data
 
   content:
     module: file:plugins/content/index.js
     order: 80
     config:
       namespace: lindas
-      entries:
-        # used on homepage (path: /)
-        - name: about-lindas
-          paths:
-            default: file:content/about-lindas/en.md
-            en: file:content/about-lindas/en.md
-            fr: file:content/about-lindas/fr.md
-            de: file:content/about-lindas/de.md
-            it: file:content/about-lindas/it.md
-        - name: linked-data
-          paths:
-            default: file:content/linked-data/en.md
-            en: file:content/linked-data/en.md
-            fr: file:content/linked-data/fr.md
-            de: file:content/linked-data/de.md
-            it: file:content/linked-data/it.md
-
-        # used at /publish/
-        - name: publish
-          paths:
-            default: file:content/publish/en.md
-            en: file:content/publish/en.md
-            fr: file:content/publish/fr.md
-            de: file:content/publish/de.md
-            it: file:content/publish/it.md
-
-        # used at /sparql/
-        - name: sparql
-          paths:
-            en: file:content/sparql/en.md
-            fr: file:content/sparql/fr.md
-            de: file:content/sparql/de.md
-            it: file:content/sparql/it.md
-
-        # used at /datasets/
-        - name: datasets
-          paths:
-            en: file:content/datasets/en.md
-            fr: file:content/datasets/fr.md
-            de: file:content/datasets/de.md
-            it: file:content/datasets/it.md
+      directory: file:content/template-parts
+  content-root:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-root
+      directory: file:content/root-pages
+      mountPath: /
+  content-documentation:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-documentation
+      directory: file:content/documentation
+      mountPath: /documentation/
+  content-governance:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-governance
+      directory: file:content/governance
+      mountPath: /governance/
+  content-technology:
+    module: file:plugins/content/index.js
+    order: 80
+    config:
+      namespace: lindas-technology
+      directory: file:content/technology
+      mountPath: /technology/
