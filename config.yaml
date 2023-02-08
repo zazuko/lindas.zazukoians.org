@@ -56,9 +56,9 @@ middlewares:
     config:
       path: views/entity.hbs
       labelLoader:
-        labelNamespaces: # Labels will be fetched for URIs that start with this list (if omitted, fetches for all URIs)
-          - https://lindas.zazukoians.org
-          - https://ld.admin.ch
+#        labelNamespaces: # Labels will be fetched for URIs that start with this list (if omitted, fetches for all URIs)
+#          - https://lindas.zazukoians.org
+#          - https://ld.admin.ch
         chunkSize: 30
         concurrency: 2
         timeout: 4000
