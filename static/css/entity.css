@@ -17,9 +17,9 @@
 }
 
 .entity-header a {
-    font-size: 18px;
-    text-transform: uppercase;
-    text-align: center;
+    font-size: 36px;
+    text-align: left;
+    font-weight: 700;
 }
 
 /* Entity body CSS */
