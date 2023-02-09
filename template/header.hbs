@@ -3,7 +3,7 @@
     <div class="top-bar">
       <div class="top-bar__bar">
         <div class="container container--flex">
-          <button class="top-bar__btn"><span></span></button>
+          <button class="top-bar__btn"><span><a href="//www.admin.ch" target="_blank">Alle Schweizer Bundesbehörden</a></span></button>
           <div class="language-switcher "><label for="lang-switcher" class="sr-only"> Select language </label> 
             <div class="form__group__select"><!----> <div class="select select--bare ">
               <form><select id="lang-switcher" name="lang" class="input--negative " onchange="this.form.submit()">
@@ -39,7 +39,7 @@
   <ul>
     {{#each locals.menu.header}}
     <li style="display: block;">
-      <a href="{{ this.path }}" {{#ifEquals ../locals.currentPath this.path}}class="active"{{/ifEquals}}><span>{{ this.title }}</span></a>
+      <a href="{{ this.path }}" {{#ifEquals ../locals.currentPath this.path}}class="active"{{/ifEquals}}><span>{{ this.label }}</span></a>
     </li>
     {{/each}}
 
