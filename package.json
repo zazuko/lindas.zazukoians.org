@@ -1,7 +1,7 @@
 {
   "name": "lindas-zazukoians-org",
   "private": true,
-  "version": "0.4.3",
+  "version": "0.4.4",
   "type": "module",
   "dependencies": {
     "@zazuko/trifid-plugin-ckan": "^2.0.1",
