@@ -4,14 +4,14 @@
   "version": "0.4.6",
   "type": "module",
   "dependencies": {
-    "@zazuko/trifid-plugin-ckan": "^2.0.1",
+    "@zazuko/trifid-plugin-ckan": "^2.2.0",
     "rehype-stringify": "^10.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.0.0",
-    "trifid": "^4.0.2",
-    "unified": "^11.0.3"
+    "trifid": "^4.0.3",
+    "unified": "^11.0.4"
   },
   "license": "UNLICENSED",
   "scripts": {
