@@ -134,33 +134,34 @@ middlewares:
     module: "@zazuko/trifid-markdown-content"
     order: 80
     config:
-      namespace: lindas
-      directory: file:content/template-parts
-  content-root:
-    module: "@zazuko/trifid-markdown-content"
-    order: 80
-    config:
-      namespace: lindas-root
-      directory: file:content/root-pages
-      mountPath: /
-  content-documentation:
-    module: "@zazuko/trifid-markdown-content"
-    order: 80
-    config:
-      namespace: lindas-documentation
-      directory: file:content/documentation
-      mountPath: /documentation/
-  content-governance:
-    module: "@zazuko/trifid-markdown-content"
-    order: 80
-    config:
-      namespace: lindas-governance
-      directory: file:content/governance
-      mountPath: /governance/
-  content-technology:
-    module: "@zazuko/trifid-markdown-content"
-    order: 80
-    config:
-      namespace: lindas-technology
-      directory: file:content/technology
-      mountPath: /technology/
+      defaults:
+        autoLink: true # create links from headings
+        idPrefix: "content-" # prefix for generated ids for headings
+        classes: # custom CSS classes for generated HTML elements
+          h1: h1
+          h2: h2
+          h3: h3
+          h4: h4
+          h5: h5
+          table: table
+
+      entries:
+        lindas:
+          directory: file:content/template-parts
+          # entries used in templates using `{{{ locals.markdown-content-plugin.lindas.XXXXXXXX }}}`
+
+        lindas-root:
+          directory: file:content/root-pages
+          mountPath: /
+
+        lindas-documentation:
+          directory: file:content/documentation
+          mountPath: /documentation/
+
+        lindas-governance:
+          directory: file:content/governance
+          mountPath: /governance/
+
+        lindas-technology:
+          directory: file:content/technology
+          mountPath: /technology/
