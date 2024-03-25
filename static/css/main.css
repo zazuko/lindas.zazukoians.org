@@ -1562,7 +1562,7 @@ body{
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-areas: "A A A B B B B B B B B B"
 }
-    
+
     .grid--responsive-cols-1\/4-3\/4 > *:nth-child(1) { grid-area: A; }
     .grid--responsive-cols-1\/4-3\/4 > *:nth-child(2) { grid-area: B; }
       .grid--responsive-cols-1\/4-3\/4.grid--reverse > *:nth-child(1) { grid-area: B; }
@@ -1591,7 +1591,7 @@ body{
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-areas: "A A A A A A A A A B B B"
 }
-    
+
     .grid--responsive-cols-3\/4-1\/4 > *:nth-child(1) { grid-area: A; }
     .grid--responsive-cols-3\/4-1\/4 > *:nth-child(2) { grid-area: B; }
       .grid--responsive-cols-3\/4-1\/4.grid--reverse > *:nth-child(1) { grid-area: B; }
@@ -1611,7 +1611,7 @@ body{
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-areas: "A A A A A A B B B B B B"
 }
-    
+
     .grid--responsive-cols-1\/3-2\/3 > *:nth-child(1), .grid--responsive-cols-2\/3-1\/3 > *:nth-child(1) { grid-area: A; }
     .grid--responsive-cols-1\/3-2\/3 > *:nth-child(2), .grid--responsive-cols-2\/3-1\/3 > *:nth-child(2) { grid-area: B; }
       .grid--responsive-cols-1\/3-2\/3.grid--reverse > *:nth-child(1), .grid--responsive-cols-2\/3-1\/3.grid--reverse > *:nth-child(1) { grid-area: B; }
@@ -1637,7 +1637,7 @@ body{
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-areas: "A A A A A A B B B B B B"
 }
-    
+
     .grid--responsive-cols-2\/3-1\/3 > *:nth-child(1) { grid-area: A; }
     .grid--responsive-cols-2\/3-1\/3 > *:nth-child(2) { grid-area: B; }
       .grid--responsive-cols-2\/3-1\/3.grid--reverse > *:nth-child(1) { grid-area: B; }
@@ -1912,8 +1912,8 @@ body{
 }
 @media print {
 
-  .container--grid {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .container--grid {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .container--grid { /* default Tailwind value */ }
@@ -2377,7 +2377,7 @@ video::cue{
   0      0   3px #000;
 }
 @media all and (display-mode: fullscreen) {
-video::cue { 
+video::cue {
     font-family: 'FrutigerNeueLTPro-Bold';
     font-size: calc(13px + 2vw)
 }
@@ -3850,6 +3850,9 @@ video::cue {
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
+.card__newline{
+  white-space: break-spaces;
+}
 .card__title{
   font-size: 1.125rem;
 }
@@ -3957,7 +3960,7 @@ video::cue {
   }
     }
 @media (min-width: 768px) {
-    
+
     .card--image-left > *:nth-child(1) { grid-area: A; }
     .card--image-left > *:nth-child(2) { grid-area: B; }
       .card--image-left.grid--reverse > *:nth-child(1) { grid-area: B; }
@@ -3965,8 +3968,8 @@ video::cue {
   }
 @media print {
 
-  .card--image-left {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .card--image-left {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .card--image-left{
@@ -4148,8 +4151,8 @@ video::cue {
   }
 @media print {
 
-  .card--image-right {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .card--image-right {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .card--image-right{
@@ -4249,20 +4252,20 @@ video::cue {
   }
 
     .card--image-right .card__content {
-      grid-area: A; 
+      grid-area: A;
     }
-  
+
     .card--image-right .card__image {
-      grid-area: B; 
+      grid-area: B;
     }
-  
+
     .card--image-right .card__body, .card--image-right .card__footer{
     padding-right: 0px;
   }
 .card--image-left.card--flat, .card--image-right.card--flat{
     border-style: none;
   }
-  
+
       .card--image-left.card--flat .card__body, .card--image-right.card--flat .card__body{
     padding-top: 0px;
   }
@@ -4288,7 +4291,7 @@ video::cue {
 .card--image-left.card--list, .card--image-right.card--list{
     border-style: none;
   }
-  
+
       .card--image-left.card--list .card__body, .card--image-right.card--list .card__body{
     padding-top: 0px;
   }
@@ -4358,8 +4361,8 @@ video::cue {
   }
 @media print {
 
-  .card--list {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .card--list {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .card--list { /* default Tailwind value */ }
@@ -6136,11 +6139,11 @@ input[type="range"]{
   margin-left: auto;
   margin-right: auto;
 }
-/* 
-    Sizing: 
-    I didn't use `container container--grid` & `container__center--sm` 
-    as the container then take the full-width and block the interaction 
-    of the backdrop 
+/*
+    Sizing:
+    I didn't use `container container--grid` & `container__center--sm`
+    as the container then take the full-width and block the interaction
+    of the backdrop
     */
 .modal--sm .modal__content{
   max-width: 640px;
@@ -6584,8 +6587,8 @@ input[type="range"]{
 }
 @media print {
 
-  .alert-banner__grid {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .alert-banner__grid {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .alert-banner__grid { /* default Tailwind value */ }
@@ -7168,9 +7171,9 @@ select:disabled + .select__icon, .input--disabled select + .select__icon{
 @media (min-width: 768px) {
 
   .container__center--xs .tabs {
-      padding-left: 0; 
+      padding-left: 0;
       padding-right: 0
-  } 
+  }
     }
 .tab__controls-container{
   position: relative;
@@ -7208,12 +7211,12 @@ select:disabled + .select__icon, .input--disabled select + .select__icon{
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
-.tab__controls{ 
+.tab__controls{
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 /* hide scrollbar with ability to still scroll */
-.tab__controls::-webkit-scrollbar { 
+.tab__controls::-webkit-scrollbar {
     display: none;
   }
 .tab__control{
@@ -7718,8 +7721,8 @@ tbody th{
 }
 @media print {
 
-  .search-results--grid .search-results-list {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .search-results--grid .search-results-list {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .search-results--grid .search-results-list { /* default Tailwind value */ }
@@ -8009,8 +8012,8 @@ tbody th{
 }
 @media print {
 
-  .search__filters__drawer {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .search__filters__drawer {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .search__filters__drawer { /* default Tailwind value */ }
@@ -8165,14 +8168,14 @@ tbody th{
 }
 /*----------------------------------------*\
  DEPRECATED
- TODO - remove when .search-result has been replaced 
- by .card.card--list component 
+ TODO - remove when .search-result has been replaced
+ by .card.card--list component
 \*----------------------------------------*/
 @media (min-width: 768px) {
 .card--image-left.search-result, .card--image-right.search-result{
     border-style: none;
   }
-  
+
       .card--image-left.search-result .card__body, .card--image-right.search-result .card__body{
     padding-top: 0px;
   }
@@ -8250,8 +8253,8 @@ tbody th{
   }
 @media print {
 
-  .search-result {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .search-result {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .search-result { /* default Tailwind value */ }
@@ -8407,7 +8410,7 @@ tbody th{
 @media print {
 
   .search-result__image picture {
-    padding-bottom: 0; 
+    padding-bottom: 0;
   }
 }
 .search-result__image picture{
@@ -8661,8 +8664,8 @@ tbody th{
   }
 @media print {
 
-  .portrait {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .portrait {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .portrait{
@@ -8810,19 +8813,19 @@ tbody th{
 }
 /* overlapping width of the picture: 100% +  margin-top of the card + responsive gap */
 @media (min-width: 1024px) {
-.portrait__image img {  
-      width: calc(100% + 2.5rem + 2.5rem)  
-  } 
+.portrait__image img {
+      width: calc(100% + 2.5rem + 2.5rem)
+  }
     }
 @media (min-width: 1280px) {
-.portrait__image img {  
-      width: calc(100% + 3rem + 3rem)  
+.portrait__image img {
+      width: calc(100% + 3rem + 3rem)
   }
     }
 @media (min-width: 1800px) {
-.portrait__image img {  
-      width: calc(100% + 4rem + 4rem)  
-  } 
+.portrait__image img {
+      width: calc(100% + 4rem + 4rem)
+  }
     }
 .portrait__card{
   display: block;
@@ -9013,9 +9016,9 @@ tbody th{
 @media (min-width: 768px) {
 
   .container__center--xs .text-image {
-      padding-left: 0; 
+      padding-left: 0;
       padding-right: 0
-  } 
+  }
     }
 /*----------------------------------------*\
   AUDIO-PLAYER
@@ -10087,8 +10090,8 @@ tbody th{
 }
 @media print {
 
-  .top-bar__grid {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .top-bar__grid {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .top-bar__grid { /* default Tailwind value */ }
@@ -11587,9 +11590,9 @@ tbody th{
 @media (min-width: 768px) {
 
   .hero--title-only .hero__content .tabs {
-      padding-left: 0; 
+      padding-left: 0;
       padding-right: 0
-  } 
+  }
     }
 .hero--title-only .hero__content .text-image, .hero--title-only .hero__content .text-image-centered {
     --side-margin: calc(1rem * -1);
@@ -11625,9 +11628,9 @@ tbody th{
 @media (min-width: 768px) {
 
   .hero--title-only .hero__content .text-image {
-      padding-left: 0; 
+      padding-left: 0;
       padding-right: 0
-  } 
+  }
     }
 .hero--title-only .hero__content blockquote {
     --side-margin: calc(1rem * -1);
@@ -12052,8 +12055,8 @@ tbody th{
 }
 @media print {
 
-  .quote {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .quote {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .quote { /* default Tailwind value */ }
@@ -12119,9 +12122,9 @@ tbody th{
   border-color: rgb(124 58 237 / var(--tw-border-opacity));
 }
 .quote {
-  
+
   grid-template-columns: repeat(2, minmax(-webkit-min-content, -webkit-max-content));
-  
+
   grid-template-columns: repeat(2, minmax(min-content, max-content));
   grid-template-areas: "A B";
 }
@@ -12587,88 +12590,88 @@ blockquote::before{
     max-width: 80%!important;
     margin: 2rem auto!important;
   }
-    #main-header .top-bar, 
-    #main-header .top-header__right, 
+    #main-header .top-bar,
+    #main-header .top-header__right,
     #main-header .desktop-menu {
       display: none !important;
-    } 
+    }
 
     #main-header .top-header {
-      border: 0px !important; 
+      border: 0px !important;
     }
 
     #main-header .logo {
-      align-items: flex-start !important; 
+      align-items: flex-start !important;
     }
 
     #main-header .logo__name {
-      display: block !important; 
+      display: block !important;
     }
 
     #main-header .logo__title {
-      display: block; 
-      height: 6.05em; 
-      margin-top: 0.05em; 
-      margin-left: 1em; 
-      padding-left: 2em; 
-      border-left: 0.025em solid #D1D5DB; 
+      display: block;
+      height: 6.05em;
+      margin-top: 0.05em;
+      margin-left: 1em;
+      padding-left: 2em;
+      border-left: 0.025em solid #D1D5DB;
     }
 
-  #main-footer, 
+  #main-footer,
   .notification-banner,
   .back-to-top-wrapper,
   .card__footer__action,
   .section__action,
-  .socials, 
+  .socials,
   .card--twitter,
   .carousel__fonctions,
-  .newsletter, 
+  .newsletter,
   .card__image,
-  .share-bar, 
+  .share-bar,
   .btn--back,
   .breadcrumb__dropdown-icon,
   .logo__separator,
   video,
-  audio, 
-  object, 
+  audio,
+  object,
   iframe {
     display: none !important;
   }
 
-  .grid {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .grid {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 
   .swiper-wrapper {
-    page-break-after: always; 
-    transform: none !important; 
-    height: auto !important; 
-    display: flex; 
-    flex-wrap: wrap; 
+    page-break-after: always;
+    transform: none !important;
+    height: auto !important;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .swiper-slide  {
-    flex-basis: 50%; 
-    width: auto !important; 
-    margin-right: 0 !important; 
+    flex-basis: 50%;
+    width: auto !important;
+    margin-right: 0 !important;
   }
 
   .ratio {
-    padding-bottom: 0 !important; 
+    padding-bottom: 0 !important;
   }
 
   p,
   img,
   ul,
   .card {
-    position: relative; 
-    display: block; 
-    -moz-column-break-inside: avoid; 
+    position: relative;
+    display: block;
+    -moz-column-break-inside: avoid;
          break-inside: avoid;
   }
 
   .card {
-    margin-bottom: 2em;  
+    margin-bottom: 2em;
   }
 
   .breadcrumb nav {
@@ -12676,7 +12679,7 @@ blockquote::before{
   }
 
   .breadcrumb-navigation a {
-    padding-left: 0.25rem !important; 
+    padding-left: 0.25rem !important;
   }
 
   .breadcrumb__include-icon {
@@ -12698,8 +12701,8 @@ blockquote::before{
 }
 @media print {
 
-  .storybook-icon-list {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .storybook-icon-list {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .storybook-icon-list { /* default Tailwind value */ }
@@ -12820,8 +12823,8 @@ blockquote::before{
 }
 @media print {
 
-  .storybook-color-list {  
-    display: block; /* needed so that content in grid don't break the break-inside rule */ 
+  .storybook-color-list {
+    display: block; /* needed so that content in grid don't break the break-inside rule */
   }
 }
 .storybook-color-list { /* default Tailwind value */ }
@@ -12969,7 +12972,7 @@ blockquote::before{
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .storybook-demo-spacings #main-content {
-    min-height: auto; 
+    min-height: auto;
   }
 .storybook-demo-ratio .grid > div > div > *{
   padding: 1.5rem;
@@ -12987,7 +12990,7 @@ blockquote::before{
 @media (min-width: 768px) {
 .storybook-show-container,
 .storybook-show-container section {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/2.25rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(12*100%/12 + 0px) 0/2.25rem 100%;
 }
@@ -12999,7 +13002,7 @@ blockquote::before{
 @media (min-width: 1024px) {
 .storybook-show-container,
 .storybook-show-container section {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/2.5rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(12*100%/12 + 0px) 0/2.5rem 100%;
 }
@@ -13011,7 +13014,7 @@ blockquote::before{
 @media (min-width: 1280px) {
 .storybook-show-container,
 .storybook-show-container section {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/3rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(12*100%/12 + 0px) 0/3rem 100%;
 }
@@ -13023,7 +13026,7 @@ blockquote::before{
 @media (min-width: 1800px) {
 .storybook-show-container,
 .storybook-show-container section {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/4rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(12*100%/12 + 0px) 0/4rem 100%;
 }
@@ -13035,7 +13038,7 @@ blockquote::before{
 @media (min-width: 768px) {
 .storybook-show-grid,
 .storybook-show-grid .container--grid {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/2.25rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(12*100%/12 + 0px) 0/2.25rem 100%;
 }
@@ -13047,7 +13050,7 @@ blockquote::before{
 @media (min-width: 1024px) {
 .storybook-show-grid,
 .storybook-show-grid .container--grid {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/2.5rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(1*100%/12 + 0px) 0/2.5rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(2*100%/12 + 0px) 0/2.5rem 100%,
@@ -13070,7 +13073,7 @@ blockquote::before{
 @media (min-width: 1280px) {
 .storybook-show-grid,
 .storybook-show-grid .container--grid {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/3rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(1*100%/12 + 0px) 0/3rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(2*100%/12 + 0px) 0/3rem 100%,
@@ -13093,7 +13096,7 @@ blockquote::before{
 @media (min-width: 1800px) {
 .storybook-show-grid,
 .storybook-show-grid .container--grid {
-    background: 
+    background:
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(0*100%/12 + 0px) 0/4rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(1*100%/12 + 0px) 0/4rem 100%,
     linear-gradient(rgba(255,0,0,0.05),rgba(255,0,0,0.05)) calc(2*100%/12 + 0px) 0/4rem 100%,
