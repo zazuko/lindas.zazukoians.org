@@ -4,13 +4,12 @@
   "version": "0.4.6",
   "type": "module",
   "dependencies": {
-    "@zazuko/trifid-markdown-content": "^1.0.1",
-    "@zazuko/trifid-plugin-ckan": "^2.4.2",
-    "trifid": "^4.1.1",
-    "unified": "^11.0.4"
+    "@zazuko/trifid-markdown-content": "^2.0.2",
+    "@zazuko/trifid-plugin-ckan": "^4.0.0",
+    "trifid": "^5.0.2"
   },
   "license": "UNLICENSED",
   "scripts": {
-    "start": "trifid"
+    "start": "trifid -c config.yaml"
   }
 }
