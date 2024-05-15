@@ -131,7 +131,9 @@ plugins:
         timeout: 4000
       followRedirects: true
 
-      rewrite: false
+      rewrite: true
+      additionalRewrites:
+        - "http://0.0.0.0:8080/"
 
       # Custom queries to get information about a resource or container
       resourceExistsQuery: "ASK { GRAPH ?g { <{{iri}}> ?p ?o }}"
