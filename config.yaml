@@ -131,7 +131,7 @@ plugins:
         timeout: 4000
       followRedirects: true
 
-      rewrite: true
+      rewrite: false
 
       # Custom queries to get information about a resource or container
       resourceExistsQuery: "ASK { GRAPH ?g { <{{iri}}> ?p ?o }}"
