@@ -6,7 +6,7 @@
   "dependencies": {
     "@zazuko/trifid-markdown-content": "^2.0.5",
     "@zazuko/trifid-plugin-ckan": "^4.2.3",
-    "trifid": "^5.0.12"
+    "trifid": "^5.1.1"
   },
   "license": "UNLICENSED",
   "scripts": {
