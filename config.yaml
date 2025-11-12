@@ -77,6 +77,8 @@ plugins:
       rewriteQuery: true
       rewriteResults: true
       endpointUrl: https://test.lindas.admin.ch/query
+      headers:
+        Accept-Encoding: "identity" # to avoid dealing with compressed responses
 
   menu:
     module: file:plugins/menu/index.js
